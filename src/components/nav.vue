@@ -40,16 +40,32 @@ export default {
     }
   },
   mounted() {
+    var that = this
     this.$root.eventHub.$on('slideTab',this.slideTab)
 
     this.$nextTick(() => {
       this.initPage()
     })
-
+    
     this.navSwiper = new Swiper('.nav',{
       slidesPerView: this.slidesPerView,
       watchSlidesProgress: true,
-      watchSlidesVisibility: true
+      watchSlidesVisibility: true,
+      on: {
+        touchEnd() {
+          // 当最后一行全都出现时去掉样式否则
+          // 取得最后一个片 如果有 swiper-slide-visible 说明 最后一行已经到达
+        var lastVisi = document.getElementsByClassName('item')[that.navList.length-1]
+        var setBtn = document.getElementsByClassName('setting-btn')[0]
+        // console.log(lastVisi.classList)
+        if(lastVisi.classList.contains('swiper-slide-visible')) {
+          // console.log('到达最后了')
+          setBtn.classList = 'setting-btn'
+        } else {
+          setBtn.classList = 'setting-btn icon-in'
+        }
+      }
+      }
     })
   },
   methods: {
