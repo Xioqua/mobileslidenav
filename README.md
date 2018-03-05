@@ -26,7 +26,7 @@ npm start
 1. 在nav.vue
  
  > bug: 如果在最后一个页面反向(后退)滑动,会发生读取不到setBtn,造成异常
- > 为什么只发生在 最后一个slide往回滑动的时候 找到是swiper.vue里不该监听 toucMove
+ > 为什么只发生在 最后一个slide往回滑动的时候 找到是swiper.vue里不该监听 touchMove
  > bug解决 通过视口宽度 * 导航项个数
 
  2. 如何让swiper每次滑动不管触摸多大都只滑动一张!
