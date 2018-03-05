@@ -6,7 +6,7 @@
 
 ## 效果展示
 
-![mobileslidenav]()
+![mobileslidenav](https://github.com/Xioqua/mobileslidenav/blob/master/screenshots/mobileslidenav.gif?raw=true)
 
 ## Build Setup
 
