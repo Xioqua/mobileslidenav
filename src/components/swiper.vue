@@ -54,12 +54,12 @@ export default {
         // http://www.swiper.com.cn/api/properties/245.html 官网用translate实现了相同效果
         // http://www.swiper.com.cn/api/event/89.html
         touchEnd() {
-          console.log(mySwiper.translate)
+          // console.log(mySwiper.translate)
           // 关键这个位移到底是多少不定啊
           var TR = this.translate
           // 视口宽度 * 个数-1
           var tranView = - (that.list.length - 1) * (document.documentElement.clientWidth)
-          console.log(tranView)
+          // console.log(tranView)
           if (TR < tranView) {
             this.setTranslate(TR)
             that.$router.push({path:'/setting'})
