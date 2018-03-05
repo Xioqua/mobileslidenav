@@ -40,18 +40,12 @@ export default {
     }
   },
   mounted() {
-    // console.log(this)
-    // 在swiper里使用vue组件的this
     var that = this
 
     var mySwiper = new Swiper('.content',{
        on: {
+        //  bug根据在于touchMove没有确定方向
         touchMove() {
-          // activeIndex超不出list的范围,这里用位移比大小了
-          // console.log(this.activeIndex,that.list.length-1)
-          
-          // 偏移量
-          // console.log(this.translate)
           if(this.isEnd) {
             that.$router.push({path:'/setting'})
           }

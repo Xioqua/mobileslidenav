@@ -71,14 +71,14 @@ export default {
       var posA = this.navList.length - Math.ceil(this.slidesPerView / 2)
       // console.log(posA)
       // 当到达posA位置时把setting-btn的样式去掉
-      // console.log(document.getElementsByClassName('setting-btn')[0])
       var setBtn = document.getElementsByClassName('setting-btn')[0]
-      if (this.nowIndex >= posA) {
-        setBtn.classList = 'setting-btn'
-      } else if(this.nowIndex < posA) {
-        setBtn.classList = 'setting-btn icon-in'
-      }
-      // bug: 如果在最后一个页面反向(向)滑动,会发生读取不到setBtn
+      // if (this.nowIndex > posA) {
+      //   setBtn.classList = 'setting-btn'
+      // } else if(this.nowIndex <= posA) {
+      //   setBtn.classList = 'setting-btn icon-in'
+      // }
+      console.log(setBtn)
+      // bug: 如果在最后一个页面反向(后退)滑动,会发生读取不到setBtn
    }
   }
 }
