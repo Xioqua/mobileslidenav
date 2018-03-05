@@ -72,13 +72,12 @@ export default {
       // console.log(posA)
       // 当到达posA位置时把setting-btn的样式去掉
       var setBtn = document.getElementsByClassName('setting-btn')[0]
-      // if (this.nowIndex > posA) {
-      //   setBtn.classList = 'setting-btn'
-      // } else if(this.nowIndex <= posA) {
-      //   setBtn.classList = 'setting-btn icon-in'
-      // }
-      console.log(setBtn)
-      // bug: 如果在最后一个页面反向(后退)滑动,会发生读取不到setBtn
+      if (this.nowIndex >= posA) {
+        setBtn.classList = 'setting-btn'
+      } else if(this.nowIndex < posA) {
+        setBtn.classList = 'setting-btn icon-in'
+      }
+      // bug: 如果在最后一个页面反向(后退)滑动,会发生读取不到setBtn 根源在swiper页面
    }
   }
 }
