@@ -40,7 +40,24 @@ export default {
     }
   },
   mounted() {
-    var mySwiper = new Swiper('.content')
+    // console.log(this)
+    // 在swiper里使用vue组件的this
+    var that = this
+
+    var mySwiper = new Swiper('.content',{
+       on: {
+        touchMove() {
+          // activeIndex超不出list的范围,这里用位移比大小了
+          // console.log(this.activeIndex,that.list.length-1)
+          
+          // 偏移量
+          // console.log(this.translate)
+          if(this.isEnd) {
+            that.$router.push({path:'/setting'})
+          }
+        }
+      }
+    })
 
     this.$root.eventHub.$on('changeTab',(index) => {
       mySwiper.slideTo(index,0,false)

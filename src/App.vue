@@ -1,20 +1,12 @@
 <template>
   <div id="app">
-    <v-nav></v-nav>
-    <v-swiper></v-swiper>
+    <router-view />
   </div>
 </template>
 
 <script>
-import nav from './components/nav'
-import swiper from './components/swiper'
-
 export default {
-  name: 'App',
-  components: {
-    'v-nav': nav,
-    'v-swiper': swiper
-  }
+  name: 'App'
 }
 </script>
 

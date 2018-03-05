@@ -20,3 +20,11 @@ npm start
 ```
 
 灵感来源 [http://www.cnblogs.com/zishang91/p/7940433.html](watchSlidesVisibility)
+
+## bug todo fix
+
+1. 在nav.vue
+ 
+ > bug: 如果在最后一个页面反向(向)滑动,会发生读取不到setBtn
+
+ 2. 如何让swiper每次滑动不管触摸多大都只滑动一张!

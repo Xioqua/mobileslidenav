@@ -3,12 +3,13 @@
    <div class="swiper-wrapper">
      <div class="item swiper-slide" 
           v-for="(item,index) in navList"
-          :class="{'active': nowIndex===index}"    
+          :class="{'active': nowIndex===index}"
           @click="tabClick(index)"
       >
        {{item.name}}
      </div>
    </div>
+  <setting-btn></setting-btn>
  </div>
 </template>
 
@@ -16,8 +17,12 @@
 import Router from 'vue-router'
 import Swiper from '../../static/swiper/swiper-4.1.0.min.js'
 import '../../static/swiper/swiper-4.1.0.min.css'
+import SettingBtn from '@/components/SettingBtn'
 
 export default {
+  components: {
+    'setting-btn': SettingBtn
+  },
   data() {
     return {
       navList: [
@@ -30,7 +35,8 @@ export default {
         {name:'页面七'}
       ],
       nowIndex: 0,
-      arr: ['/one','/two','/three','/four','/five','/six','/seven']
+      arr: ['/one','/two','/three','/four','/five','/six','/seven'],
+      slidesPerView: 3
     }
   },
   mounted() {
@@ -41,7 +47,7 @@ export default {
     })
 
     this.navSwiper = new Swiper('.nav',{
-      slidesPerView: 3,
+      slidesPerView: this.slidesPerView,
       watchSlidesProgress: true,
       watchSlidesVisibility: true
     })
@@ -62,6 +68,17 @@ export default {
       router.push(href)
 
       this.navSwiper.slideTo(this.nowIndex-1)
+      var posA = this.navList.length - Math.ceil(this.slidesPerView / 2)
+      // console.log(posA)
+      // 当到达posA位置时把setting-btn的样式去掉
+      // console.log(document.getElementsByClassName('setting-btn')[0])
+      var setBtn = document.getElementsByClassName('setting-btn')[0]
+      if (this.nowIndex >= posA) {
+        setBtn.classList = 'setting-btn'
+      } else if(this.nowIndex < posA) {
+        setBtn.classList = 'setting-btn icon-in'
+      }
+      // bug: 如果在最后一个页面反向(向)滑动,会发生读取不到setBtn
    }
   }
 }
@@ -69,10 +86,11 @@ export default {
 </script>
 
 <style scoped>
-.item {padding: 1em;box-sizing: border-box;}
+.item {padding: .5em;box-sizing: border-box;}
 .item.active {
-  background-color: #abc;
+  color: #cd6115;
+}
+.item:last-child {
+  padding-right: 3.5em;
 }
 </style>
-
-
